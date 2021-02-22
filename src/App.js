@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component,Fragment } from "react";
+import Counter from "./Counter";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const Buttons = ({incremet,decrement,count}) => (
+  <Fragment>
+    <h1>Valor atual {count}</h1>
+    <div>
+      <button onClick={incremet}>Adicionar</button> 
     </div>
-  );
-}
+    <div>
+      <button onClick={decrement}>Remover</button>
+    </div>
+  </Fragment>
+)
 
+class App extends Component{
+
+  render(){
+    return(
+      <Fragment>
+        <Counter render={({incremet,decrement,count}) => (
+          <Buttons incremet={incremet} decrement={decrement} count={count}>            
+          </Buttons>
+        )
+      }>          
+        </Counter>
+      </Fragment>
+    )
+  }
+}
 export default App;
